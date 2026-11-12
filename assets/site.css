@@ -201,3 +201,5 @@ html[data-page="collection"]::view-transition-new(root) { animation-name:collect
   ::view-transition-old(root),
   ::view-transition-new(root) { animation:none; }
 }
+
+.viewer::backdrop{background:transparent}

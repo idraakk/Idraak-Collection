@@ -11,6 +11,29 @@ if (rail && viewer) {
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0;
   let trigger;
+  let opening;
+  let closing = false;
+  const pageMotion = { duration: 190, easing: 'cubic-bezier(.22,.75,.25,1)', fill: 'both' };
+  const pageRest = { transform: 'translate3d(0,0,0)', opacity: 1 };
+
+  async function closeViewer() {
+    if (closing || !viewer.open) return;
+    closing = true;
+    opening?.cancel();
+    if (!motion.matches) {
+      const exit = viewer.animate([pageRest, { transform: 'translate3d(16%,0,0)', opacity: 0 }], pageMotion);
+      const underneath = document.querySelector('main').animate([
+        { transform: 'translate3d(-4%,0,0)', opacity: .94 }, pageRest,
+      ], pageMotion);
+      await exit.finished.catch(() => {});
+      viewer.close();
+      exit.cancel();
+      underneath.cancel();
+    } else {
+      viewer.close();
+    }
+    closing = false;
+  }
 
   function updateArrows() {
     arrows[0].disabled = rail.scrollLeft <= 2;
@@ -67,15 +90,28 @@ if (rail && viewer) {
     trigger = button;
     show(index);
     viewer.showModal();
+    if (!motion.matches) {
+      opening = viewer.animate([{ transform: 'translate3d(16%,0,0)', opacity: .82 }, pageRest], pageMotion);
+      const animation = opening;
+      const underneath = document.querySelector('main').animate([{ opacity: 1 }, { opacity: 0 }], pageMotion);
+      void animation.finished.catch(() => {}).then(() => {
+        animation.cancel();
+        underneath.cancel();
+      });
+    }
     close.focus();
   }));
 
   viewer.querySelectorAll('[data-step]').forEach((button) => {
     button.onclick = () => move(Number(button.dataset.step));
   });
-  close.onclick = () => viewer.close();
+  close.onclick = closeViewer;
+  viewer.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    void closeViewer();
+  });
   viewer.addEventListener('click', (event) => {
-    if (event.target === viewer) viewer.close();
+    if (event.target === viewer) void closeViewer();
   });
   const stage = viewer.querySelector('.viewer-body');
   let swipe;
