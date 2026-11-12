@@ -16,7 +16,7 @@ export const products = [
       ['reel', 'Lecture reels', 'A lecture slide and audience in the full-screen reel player'],
       ['albums', 'Screen Notes', 'Lecture frames organized into Screen Notes albums'],
       ['captures', 'Captured frames', 'Timestamped captures in the Screen Notes Library'],
-      ['notes', 'Retained messages', 'A written note saved alongside its lecture timestamp'],
+      ['notes', 'Written notes', 'A written note saved alongside its lecture timestamp'],
       ['saved', 'Saved reels', 'Bookmarked reels grouped in a thumbnail grid'],
     ],
     features: [
