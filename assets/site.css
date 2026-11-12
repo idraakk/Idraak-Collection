@@ -1,7 +1,7 @@
 @font-face{font-family:Manrope;src:url(fonts/manrope-latin-700-normal.woff2);font-weight:700;font-display:swap}
 @font-face{font-family:Manrope;src:url(fonts/manrope-latin-800-normal.woff2);font-weight:800;font-display:swap}
 @font-face{font-family:"DM Sans";src:url(fonts/dm-sans-latin-400-normal.woff2);font-display:swap}
-:root{color-scheme:light;--paper:#f5f3e9;--ink:#202820;--muted:#4d594e;--line:#ccd0bf;--forest:#173b2c;--lime:#dff2a9;--page:min(1240px,calc(100% - clamp(36px,9vw,140px)));font-family:"DM Sans",sans-serif;background:var(--paper);color:var(--ink)}
+:root{color-scheme:only light;--paper:#f5f3e9;--ink:#202820;--muted:#4d594e;--line:#ccd0bf;--forest:#173b2c;--lime:#dff2a9;--page:min(1240px,calc(100% - clamp(36px,9vw,140px)));font-family:"DM Sans",sans-serif;background:var(--paper);color:var(--ink)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
 body{margin:0}
