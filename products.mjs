@@ -10,16 +10,14 @@ export const products = [
     apk: 'Microgram.apk',
     preview: ['lecture-profile', 'library', 'reel'],
     screenshots: [
+      ['home', 'Home feed', 'Updated MicroGram home feed with the Meet MicroGram post'],
       ['library', 'Library', 'Imported videos and playlists in the MicroGram Library'],
       ['lecture-profile', 'Lecture profile', 'Lecture overview with watch progress and a grid of reels'],
       ['reel', 'Lecture reels', 'A lecture slide and audience in the full-screen reel player'],
-      ['home', 'Learning goals', 'Home screen with a daily goal and learning heatmap'],
       ['albums', 'Screen Notes', 'Lecture frames organized into Screen Notes albums'],
       ['captures', 'Captured frames', 'Timestamped captures in the Screen Notes Library'],
-      ['notes', 'Written notes', 'A written note saved alongside its lecture timestamp'],
+      ['notes', 'Retained messages', 'A written note saved alongside its lecture timestamp'],
       ['saved', 'Saved reels', 'Bookmarked reels grouped in a thumbnail grid'],
-      ['introduction', 'Home feed', 'MicroGram introduction in the creator feed'],
-      ['reel-classroom', 'Classroom reel', 'A classroom lecture playing in the reel viewer'],
     ],
     features: [
       ['Watch one reel at a time', 'Choose a reel length when importing a video or playlist, then swipe through the lecture and resume where you left off.'],
