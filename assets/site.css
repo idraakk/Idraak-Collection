@@ -203,3 +203,11 @@ html[data-page="collection"]::view-transition-new(root) { animation-name:collect
 }
 
 .viewer::backdrop{background:transparent}
+
+/* Remove the browser tap flash on gallery actions while preserving keyboard focus. */
+.exhibit,
+.product-copy .button,
+.shot {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
