@@ -20,12 +20,12 @@ const plate = (product, prefix = '') => '<div class="plate" aria-hidden="true">'
   (product.preview?.map((id) => product.screenshots.find(([file]) => file === id)) ?? product.screenshots.slice(0, 3)).map((shot) => '<div class="phone">' + picture(product, shot, prefix, true) + '</div>').join('') +
   '</div>';
 
-function shell({ title, description, prefix = '', body, source = '', page = 'collection' }) {
+function shell({ title, description, prefix = '', body, page = 'collection' }) {
   return '<!doctype html><html lang="en" data-page="' + page + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<meta name="description" content="' + escape(description) + '"><title>' + escape(title) + '</title>' +
-    '<link rel="icon" href="' + prefix + 'assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="' + prefix + 'assets/site.css"><script defer src="' + prefix + 'assets/site.js"></script></head>' +
+    '<link rel="icon" href="' + prefix + 'assets/collection-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="' + prefix + 'assets/site.css"><script defer src="' + prefix + 'assets/site.js"></script></head>' +
     '<body><a class="skip" href="#main">Skip to content</a>' + body +
-    '<footer id="about" class="site-footer wrap"><div><strong>Idraak’s collection</strong></div><nav aria-label="Footer links">' + source + '<a href="https://www.linkedin.com/in/idraak/">LinkedIn ' + arrow + '</a><a href="https://www.instagram.com/idraakk/">Instagram ' + arrow + '</a></nav></footer></body></html>';
+    '<footer id="about" class="site-footer wrap"><div><strong>Idraak’s collection</strong></div><nav aria-label="Footer links"><a href="https://www.linkedin.com/in/idraak/">LinkedIn ' + arrow + '</a><a href="https://www.instagram.com/idraakk/">Instagram ' + arrow + '</a></nav></footer></body></html>';
 }
 
 function home() {
@@ -42,11 +42,10 @@ function productPage(product) {
   const access = product.apk
     ? 'href="' + prefix + 'assets/' + product.slug + '/downloads/' + product.apk + '" download'
     : product.accessUrl ? 'href="' + escape(product.accessUrl) + '"' : '';
-  const source = product.source ? '<a href="' + prefix + 'assets/' + product.slug + '/downloads/' + product.source + '" download>Corresponding source ' + arrow + '</a>' : '';
   const images = product.screenshots.map((shot) =>
     '<figure><button type="button" class="shot" data-caption="' + escape(shot[1]) + '" aria-label="Enlarge ' + escape(shot[1]) + '">' +
     picture(product, shot, prefix) + '</button><figcaption>' + escape(shot[1]) + '</figcaption></figure>').join('');
-  return shell({ title: product.name + ' · Idraak’s collection', description: product.description, prefix, source, page: 'product', body:
+  return shell({ title: product.name + ' · Idraak’s collection', description: product.description, prefix, page: 'product', body:
     '<main id="main" class="wrap product"><a href="../index.html#collection" class="back">' + svg('back') + ' Collection</a><section class="product-hero"><div class="product-copy"><div class="product-meta">' + icon(product, prefix) + '<span>' + escape(product.name) + ' / ' + escape(product.platform) + '</span></div><h1>' + escape(product.headline) + '</h1><p>' + escape(product.description) + '</p><p>' + escape(product.introduction) + '</p>' + (access ? '<a class="button" ' + access + '>Get ' + escape(product.name) + ' ' + svg('download') + '</a>' : '') + '</div>' + plate(product, prefix) + '</section>' +
     '<nav class="product-index" aria-label="On this page"><a href="#screens-title">Screenshots ↓</a><a href="#features-title">Features ↓</a><a href="#privacy-title">Privacy ↓</a></nav>' +
     '<section class="product-section" aria-labelledby="screens-title"><div class="section-line"><h2 id="screens-title">Screenshots</h2><div class="rail-controls"><button type="button" data-scroll="-1" aria-label="Previous screenshots">' + svg('left') + '</button><button type="button" data-scroll="1" aria-label="Next screenshots">' + svg('right') + '</button></div></div><div class="screens" tabindex="0" aria-label="Screenshots">' + images + '</div></section>' +
@@ -63,8 +62,8 @@ const used = new Set();
 for (const product of products) {
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(product.slug) || used.has(product.slug)) throw new Error('Invalid or duplicate product slug.');
   used.add(product.slug);
-  for (const filename of [product.apk, product.source].filter(Boolean)) {
-    if (!/^[\w.-]+\.(apk|zip)$/.test(filename)) throw new Error('Invalid download filename.');
+  for (const filename of [product.apk].filter(Boolean)) {
+    if (!/^[\w.-]+\.apk$/.test(filename)) throw new Error('Invalid download filename.');
     await readFile(new URL('./assets/' + product.slug + '/downloads/' + filename, import.meta.url));
   }
   if (product.accessUrl && new URL(product.accessUrl).protocol !== 'https:') throw new Error('Use an HTTPS access URL.');

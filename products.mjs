@@ -8,7 +8,6 @@ export const products = [
     description: 'Turn YouTube videos and playlists into bite-sized, swipeable learning reels.',
     introduction: 'Choose the length of each reel and work through a lecture at your own pace. Save the moments worth revisiting, capture a frame with a note, and see how far you’ve come.',
     apk: 'Microgram.apk',
-    source: 'MicroGram-Direct-source.zip',
     preview: ['lecture-profile', 'library', 'reel'],
     screenshots: [
       ['library', 'Library', 'Imported videos and playlists in the MicroGram Library'],
@@ -28,7 +27,7 @@ export const products = [
       ['See your progress', 'Track watched reels, set a daily learning goal, and see your activity across lectures.'],
     ],
     privacy: [
-      ['We don’t collect your learning data.', 'The app does not send your study activity to MicroGram’s servers.'],
+      ['Privacy comes first', 'MicroGram counts creator-post views. Messages and replies are shared only when you send them.'],
       ['Your learning stays private', 'Your notes, saved reels, and watch progress stay on your device.'],
     ],
   },

@@ -23,7 +23,7 @@ The Pages URL is https://idraakk.github.io/Idraak-Collection/. Relative paths le
 
 Edit products.mjs. Each entry gets a gallery card and a dedicated page at its slug. Add its icon and at least three screenshots under assets/<slug>/, then run node build.mjs to verify the files. Commit and push the source.
 
-Get MicroGram downloads the APK in assets/microgram/downloads/. The current file is the debug-signed build used for phone testing. Before a public release, replace it with your release-signed APK and update the corresponding-source archive next to it. Both are linked from the product page.
+Get MicroGram downloads the APK in assets/microgram/downloads/. The current file is the debug-signed build used for phone testing. Before a public release, replace it with your release-signed APK. See the Android build’s distribution terms for corresponding-source requirements.
 
 For a same-Wi-Fi preview, run python -m http.server 4175 --bind 0.0.0.0 --directory dist, then open the laptop's Wi-Fi IPv4 address on port 4175 from your phone. Windows may require allowing the server on the private network.
 
