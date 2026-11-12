@@ -61,8 +61,8 @@ h1,h2,h3{font-family:Manrope,sans-serif;line-height:1.03;margin:0;font-weight:80
 .product-copy>p{margin:0;color:#553746}
 .product-copy .button{margin-top:5px;background:#2c1c26;color:#fff}
 .product-section{margin-top:clamp(48px,7vw,92px)}
-.screens{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-color:#748674 transparent;padding:4px 4px 14px}
-.screens figure{scroll-snap-align:start;flex:0 0 clamp(144px,21vw,225px);margin:0}
+.screens{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;scrollbar-color:#748674 transparent;padding:4px 4px 14px}
+.screens figure{flex:0 0 clamp(144px,21vw,225px);margin:0}
 .shot{display:block;width:100%;padding:0;background:#080808;border:1px solid #344137;border-radius:12px;overflow:hidden}
 .shot:hover{border-color:#668d45}
 .shot img{width:100%;aspect-ratio:9/20;object-fit:contain}
@@ -105,7 +105,7 @@ html:has(.viewer:modal){overflow:hidden}
  .site-footer,.access{align-items:flex-start;flex-direction:column}
  .viewer button{width:33px;height:33px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+@media(prefers-reduced-motion:reduce){html,.screens{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 .site-header .brand{padding:4px;margin-left:-4px}
 .site-header .brand img{margin:0}
 .intro h1 em{position:relative}
@@ -211,3 +211,8 @@ html[data-page="collection"]::view-transition-new(root) { animation-name:collect
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
+
+.product-download{display:flex;flex-wrap:wrap;align-items:center;gap:7px 14px}
+.product-download .button{flex:none;margin-top:0}
+.apk-download-note{flex:1 1 145px;max-width:24ch;margin:0;color:#634a58;font-size:12px;line-height:1.45}
+@media(max-width:750px){.product-download{flex-direction:column;align-items:flex-start}.apk-download-note{flex:none;max-width:34ch}}
