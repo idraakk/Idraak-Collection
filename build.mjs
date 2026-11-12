@@ -24,7 +24,7 @@ const plate = (product, prefix = '') => '<div class="plate" aria-hidden="true">'
   '</div>';
 
 function shell({ title, description, prefix = '', body, page = 'collection' }) {
-  return '<!doctype html><html lang="en" data-page="' + page + '"><head><meta charset="utf-8"><meta name="color-scheme" content="only light"><meta name="viewport" content="width=device-width, initial-scale=1">' +
+  return '<!doctype html><html lang="en" data-page="' + page + '"><head><meta charset="utf-8"><meta name="color-scheme" content="only light"><meta name="darkreader-lock"><meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<meta name="description" content="' + escape(description) + '"><title>' + escape(title) + '</title>' +
     '<link rel="icon" href="' + prefix + 'assets/collection-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="' + prefix + 'assets/site.css?v=' + styleVersion + '"><script defer src="' + prefix + 'assets/site.js"></script></head>' +
     '<body><a class="skip" href="#main">Skip to content</a>' + body +
