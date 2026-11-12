@@ -27,7 +27,7 @@ export const products = [
       ['See your progress', 'Track watched reels, set a daily learning goal, and see your activity across lectures.'],
     ],
     privacy: [
-      ['Privacy comes first', 'MicroGram counts creator-post views. Messages and replies are shared only when you send them.'],
+      ['We don’t collect your private study data', 'MicroGram counts creator-post views. Messages and replies are sent only when you choose to send them.'],
       ['Your learning stays private', 'Your notes, saved reels, and watch progress stay on your device.'],
     ],
   },
