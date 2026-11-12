@@ -1,7 +1,10 @@
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile, cp } from 'node:fs/promises';
 import { products } from './products.mjs';
 
 const out = new URL('./dist/', import.meta.url);
+const css = await readFile(new URL('./assets/site.css', import.meta.url));
+const styleVersion = createHash('sha256').update(css).digest('hex').slice(0, 12);
 const escape = (value) => String(value).replace(/[&<>"']/g, (character) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const arrow = '<span aria-hidden="true">↗</span>';
@@ -23,7 +26,7 @@ const plate = (product, prefix = '') => '<div class="plate" aria-hidden="true">'
 function shell({ title, description, prefix = '', body, page = 'collection' }) {
   return '<!doctype html><html lang="en" data-page="' + page + '"><head><meta charset="utf-8"><meta name="color-scheme" content="only light"><meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<meta name="description" content="' + escape(description) + '"><title>' + escape(title) + '</title>' +
-    '<link rel="icon" href="' + prefix + 'assets/collection-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="' + prefix + 'assets/site.css"><script defer src="' + prefix + 'assets/site.js"></script></head>' +
+    '<link rel="icon" href="' + prefix + 'assets/collection-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="' + prefix + 'assets/site.css?v=' + styleVersion + '"><script defer src="' + prefix + 'assets/site.js"></script></head>' +
     '<body><a class="skip" href="#main">Skip to content</a>' + body +
     '<footer id="about" class="site-footer wrap"><div><strong>Idraak’s collection</strong></div><nav aria-label="Footer links"><a href="https://www.linkedin.com/in/idraak/">LinkedIn ' + arrow + '</a><a href="https://www.instagram.com/idraakk/">Instagram ' + arrow + '</a></nav></footer></body></html>';
 }
