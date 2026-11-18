@@ -8,6 +8,7 @@ export const products = [
     description: 'Turn YouTube videos and playlists into bite-sized, swipeable learning reels.',
     introduction: 'Choose the length of each reel and work through a lecture at your own pace. Save the moments worth revisiting, capture a frame with a note, and see how far you’ve come.',
     apk: 'Microgram.apk',
+    browserPreview: 'https://idraakk.github.io/Microgram_Preview_Web/',
     preview: ['lecture-profile', 'library', 'reel'],
     screenshots: [
       ['home', 'Home feed', 'Updated MicroGram home feed with the Meet MicroGram post'],
