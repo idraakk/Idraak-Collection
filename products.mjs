@@ -28,7 +28,7 @@ export const products = [
       ['See your progress', 'Track watched reels, set a daily learning goal, and see your activity across lectures.'],
     ],
     privacy: [
-      ['You choose what to share', 'MicroGram counts creator-post views. Android users can opt in to sharing app opens and time spent using a random install ID. Messages and replies are sent when you submit them.'],
+      ['You choose what to share', 'MicroGram counts creator-post views. When usage sharing is enabled, MicroGram measures app opens and time spent using a random install ID. Manage usage sharing in Settings. Messages and replies are sent when you submit them.'],
       ['Your learning stays private', 'Your notes, saved reels, and watch progress stay on your device.'],
     ],
   },
