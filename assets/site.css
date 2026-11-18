@@ -219,3 +219,11 @@ html[data-page="collection"]::view-transition-new(root) { animation-name:collect
 .product-copy .preview-button{background:#754760;color:#fff}
 .product-copy .preview-button:hover{background:#62394f}
 .apk-download-note{max-width:52ch;margin:0;color:#634a58;font-size:12px;line-height:1.45}
+@media(max-width:750px){
+ .product-hero{--download-note-gap:10px}
+ .product-copy:has(.product-download){padding-bottom:var(--download-note-gap)}
+ .product-download{width:100%;gap:var(--download-note-gap)}
+ .product-actions:has(.preview-button){width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .product-actions:has(.preview-button) .button{justify-content:center;min-width:0;padding:9px 7px;gap:5px;text-align:center;font-size:14px;line-height:1.25}
+ .product-actions:has(.preview-button) .button svg{flex:none;width:15px;height:15px}
+}
